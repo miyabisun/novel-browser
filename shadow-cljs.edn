@@ -1,0 +1,28 @@
+;; shadow-cljs configuration
+{:source-paths
+ ["src/dev"
+  "src/main"
+  "src/test"]
+
+ :dependencies
+ [[venantius/accountant "0.2.5"]
+  [bidi "2.1.6"]
+  [binaryage/devtools "0.9.10"]
+  [expound "0.8.4"]
+  [lambdaisland/fetch "1.5.83"]
+  [reagent "1.2.0"]
+  [re-frame "1.4.2"]]
+
+ :builds
+ {:app {:target :browser
+        :output-dir "public/js"
+        :asset-path "/js"
+
+        :modules
+        {:main
+         {:entries [novel-browser.core]}}
+
+        :devtools
+        {:after-load novel-browser.core/init
+         :http-root "public"
+         :http-port 3000}}}}
